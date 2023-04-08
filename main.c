@@ -42,18 +42,15 @@ int main(int argc, char *argv[]) {
     }
 
 	printf("-p set?: %d -n set?: %d\n", pSet, nSet);
-	//printf("pozicia x %d y %d", userPos.x, userPos.y);
+	printf("pozicia x %d y %d\n", userPos.x, userPos.y);
 	return 0;
 }
 //return 1 ak nastala chybova sutuacia
 int extractPosition(char* positionString, int* posX, int* posY){
-	// sscanf(positionString, "%d,%d", posX, posY);
 	char *token1, *token2;
-	//int isNumber;
 	token1 = strtok(positionString, POS_DELIM);
-	// printf("token %s\n", token1);
 	token2 = strtok(NULL, POS_DELIM);
-	// printf("druhy token %s\n", token2);
+
 	if(token1 == NULL || token2 == NULL)
 	{
 		return 1;
@@ -64,7 +61,8 @@ int extractPosition(char* positionString, int* posX, int* posY){
 		return 1;
 	}
 	
-
+	sscanf(token1, "%d", posX);
+	sscanf(token2, "%d", posY);
 	
 	return 0;
 }
