@@ -11,11 +11,41 @@
 #define POS_DELIM ","
 int extractPosition(char* positionString, int* posX, int* posY);
 int isNumber(char *string);
+
 int main(int argc, char *argv[]) {
-	// TODO:
-	// Tu vypracujte zadanie, pouzivajte vlastne pomocne funkcie.
-	//    - pouzivajte makra/struktury z 'config.h'
-	//    - pouzite databazu restauracii, ktora je definovana v subore 'data.c'
+	int opt;
+	char* optstring = ":p:n";
+	int pSet = FALSE, nSet = FALSE, errorState = FALSE;
+	struct position userPos;
+    while ((opt = getopt(argc, argv, optstring)) != -1) {
+        switch (opt) {
+            case 'p':
+                pSet = TRUE;
+				errorState = extractPosition(optarg, &userPos.x, &userPos.y);
+				if (errorState == TRUE)
+				{
+					printf("E1\n");
+					return 0;
+				}
+				
+                break;
+            case 'n':
+                if (pSet == TRUE)
+				{
+					nSet =TRUE;
+				}
+                break;
+            default: /* '?' alebo ':' */
+                printf("Neplatny prepinac alebo chybajuci argument prepinaca\n");
+                return 1;
+        }
+    }
+
+	printf("-p set?: %d -n set?: %d\n", pSet, nSet);
+	//printf("pozicia x %d y %d", userPos.x, userPos.y);
+	return 0;
+}
+//return 1 ak nastala chybova sutuacia
 int extractPosition(char* positionString, int* posX, int* posY){
 	// sscanf(positionString, "%d,%d", posX, posY);
 	char *token1, *token2;
