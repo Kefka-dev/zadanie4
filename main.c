@@ -40,7 +40,22 @@ int main(int argc, char *argv[]) {
                 return 1;
         }
     }
-
+	if (optind == argc)
+	{
+		//vypis vsetkych restauracii
+		for (int i = 0; i < DB_NUM; i++)
+		{
+			printf("%s\n%d,%d\n%d\n", db[i].name, db[i].pos.x, db[i].pos.y, db[i].n);
+			for (int j = 0; j < db[i].n; j++)
+			{
+				printf("%d. %s,%d\n", j+1, db[i].menu[j].name, db[i].menu[j].price);
+			}
+			printf("\n");
+		}
+		
+		return 0;
+	}
+	
 	printf("-p set?: %d -n set?: %d\n", pSet, nSet);
 	printf("pozicia x %d y %d\n", userPos.x, userPos.y);
 	return 0;
