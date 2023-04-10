@@ -186,6 +186,7 @@ int compareCV(const void *a, const void *b)
 	
 }
 
+//najde najlepsie CV a flagne tym to jedlo
 int minCV(struct vyhodnostJedla *najdeneJedla, int najdeneJedlaSize)
 {
 	int najmensieCV = najdeneJedla[0].CV;
