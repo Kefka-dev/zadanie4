@@ -31,6 +31,7 @@ int main(int argc, char *argv[]) {
 	char* optstring = ":p:n";
 	int pSet = FALSE, nSet = FALSE, errorState = FALSE;
 	struct position userPos;
+	VYHODNOSTJEDLA najdeneJedla[DB_NUM];
     while ((opt = getopt(argc, argv, optstring)) != -1) {
         switch (opt) {
             case 'p':
