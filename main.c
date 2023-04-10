@@ -10,8 +10,21 @@
 #define TRUE 1
 #define FALSE 0
 #define POS_DELIM ","
+
+typedef struct vyhodnostJedla {
+	int CV;
+	int Dm;
+	int indexRestDB;
+	int indexJedloMenu;
+	int best;
+} VYHODNOSTJEDLA;
+
 int extractPosition(char* positionString, int* posX, int* posY);
 int isNumber(char *string);
+int wantedFoodRestaurant(	char* wantedFood,
+							struct position userPos,
+							VYHODNOSTJEDLA *najdeneJedla,
+							int najdeneJedlaSize);
 
 int main(int argc, char *argv[]) {
 	int opt;
@@ -93,4 +106,38 @@ int isNumber(char *string)
 		}
 	}
 	return 1;
+}
+
+//najde jedla, do pola ulozi CV, indexjedla, index Restiky a vrati pocet najdenych jedal
+int wantedFoodRestaurant(char* wantedFood, struct position userPos, VYHODNOSTJEDLA *najdeneJedla, int najdeneJedlaSize)
+{
+	//printf("test");
+	int CV = 0;
+	int Dm = 0;
+	int jedloCount = 0;
+	for (int i = 0; i < DB_NUM; i++)
+	{
+		for (int j = 0; j < db[i].n; j++)
+		{
+			Dm = abs(userPos.x - db[i].pos.x) + abs(userPos.y -db[i].pos.y);
+			if (strcmp(wantedFood, db[i].menu[j].name) == 0)
+			{
+				if (jedloCount < najdeneJedlaSize)
+				{
+					najdeneJedla[jedloCount].CV = 10*Dm + 100*db[i].menu[j].price;
+					najdeneJedla[jedloCount].Dm = Dm;
+					najdeneJedla[jedloCount].indexRestDB = i;
+					najdeneJedla[jedloCount].indexJedloMenu = j;
+					jedloCount++;
+				}
+				
+				//printf("jedlo v restike cislo %d cenova vyhodnost %d\n", i, CV);
+				
+			}
+			
+		}
+		
+	}
+	return jedloCount;
+}
 }
