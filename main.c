@@ -52,6 +52,8 @@ int main(int argc, char *argv[]) {
 				//printf("%s", wantedFood);
 				jedloCount = wantedFoodRestaurant(wantedFood, userPos, najdeneJedla, DB_NUM);
 				qsort(najdeneJedla, jedloCount, sizeof(struct vyhodnostJedla), compareCV);
+				//printf("nasiel som %d jedal\n", jedloCount);
+				//printf("CV = %d, index jedla = %d, index restiky = %d", najdeneJedla[0].CV, najdeneJedla[0].indexJedloMenu, najdeneJedla[0].indexRestDB);
                 minCV(najdeneJedla, jedloCount);
 				for (int i = 0; i < jedloCount; i++)
 				{
