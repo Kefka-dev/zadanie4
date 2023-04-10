@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
                 return 1;
         }
     }
-	if (optind == argc)
+	if (argc == 1)
 	{
 		//vypis vsetkych restauracii
 		for (int i = 0; i < DB_NUM; i++)
