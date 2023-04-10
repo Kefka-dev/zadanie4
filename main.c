@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 					
 				}
 				
-                break;
+				break;
             case 'n':
                 if (pSet == TRUE)
 				{
