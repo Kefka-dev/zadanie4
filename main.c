@@ -25,6 +25,7 @@ int wantedFoodRestaurant(	char* wantedFood,
 							struct position userPos,
 							VYHODNOSTJEDLA *najdeneJedla,
 							int najdeneJedlaSize);
+int compareCV(const void *a, const void *b);
 
 int main(int argc, char *argv[]) {
 	int opt;
@@ -141,4 +142,24 @@ int wantedFoodRestaurant(char* wantedFood, struct position userPos, VYHODNOSTJED
 	}
 	return jedloCount;
 }
+
+//qsort potrebuje compare funkciu ktorej da 2 void pointre a vrati int
+int compareCV(const void *a, const void *b)
+{
+	const struct vyhodnostJedla *jedloA = (const struct vyhodnostJedla *)a;
+	const struct vyhodnostJedla *jedloB = (const struct vyhodnostJedla *)b;
+	
+	if (jedloA->CV < jedloB->CV)
+	{
+		return -1;
+	} else if ( jedloA->CV < jedloB->CV) 
+	{
+		return 1;
+	} else 
+	{
+		return 0;
+	}
+	
+}
+
 }
