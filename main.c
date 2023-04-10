@@ -88,15 +88,23 @@ int main(int argc, char *argv[]) {
 		{
 			qsort(najdeneJedla, jedloCount, sizeof(struct vyhodnostJedla), compareCV);
 			minCV(najdeneJedla, jedloCount);
+			//printf("jedlo count = %d\n\n", jedloCount);
+			// for (int i = 0; i < jedloCount; i++)
+			// {
+			// 	printf("%s CV = %d\n", najdeneJedla[i].restaurantName, najdeneJedla[i].CV);
+			// }
+			
 			for (int i = 0; i < jedloCount; i++)
 			{
 				if (najdeneJedla[i].best == TRUE)
 				{
 					printf("%s: %d %d *\n", db[najdeneJedla[i].indexRestDB].name, najdeneJedla[i].Dm, db[najdeneJedla[i].indexRestDB].menu[najdeneJedla[i].indexJedloMenu].price);
+					//printf("cenova vyhodnost %d\n", najdeneJedla[i].CV);
 				}
 				else
 				{
 					printf("%s: %d %d\n", db[najdeneJedla[i].indexRestDB].name, najdeneJedla[i].Dm, db[najdeneJedla[i].indexRestDB].menu[najdeneJedla[i].indexJedloMenu].price);
+					//printf("cenova vyhodnost %d\n", najdeneJedla[i].CV);
 				}
 				
 			}
