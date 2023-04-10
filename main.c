@@ -120,8 +120,8 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 	
-	printf("-p set?: %d -n set?: %d\n", pSet, nSet);
-	printf("pozicia x %d y %d\n", userPos.x, userPos.y);
+	// printf("-p set?: %d -n set?: %d\n", pSet, nSet);
+	// printf("pozicia x %d y %d\n", userPos.x, userPos.y);
 	return 0;
 }
 //return 1 ak nastala chybova sutuacia
