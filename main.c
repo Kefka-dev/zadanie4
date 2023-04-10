@@ -34,6 +34,7 @@ int main(int argc, char *argv[]) {
 	int pSet = FALSE, nSet = FALSE, errorState = FALSE;
 	struct position userPos;
 	char wantedFood[MAX_NAME+1];
+	int jedloCount;
 	VYHODNOSTJEDLA najdeneJedla[DB_NUM];
     while ((opt = getopt(argc, argv, optstring)) != -1) {
         switch (opt) {
@@ -47,6 +48,8 @@ int main(int argc, char *argv[]) {
 				}
 				fgets(wantedFood, MAX_NAME+1, stdin);
 				wantedFood[strlen(wantedFood)-1] = '\0';
+				//printf("%s", wantedFood);
+				jedloCount = wantedFoodRestaurant(wantedFood, userPos, najdeneJedla, DB_NUM);
 				
                 break;
             case 'n':
