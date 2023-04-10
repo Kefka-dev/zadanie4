@@ -49,11 +49,8 @@ int main(int argc, char *argv[]) {
 				}
 				fgets(wantedFood, MAX_NAME+1, stdin);
 				wantedFood[strlen(wantedFood)-1] = '\0';
-				//printf("%s", wantedFood);
 				jedloCount = wantedFoodRestaurant(wantedFood, userPos, najdeneJedla, DB_NUM);
 				qsort(najdeneJedla, jedloCount, sizeof(struct vyhodnostJedla), compareCV);
-				//printf("nasiel som %d jedal\n", jedloCount);
-				//printf("CV = %d, index jedla = %d, index restiky = %d", najdeneJedla[0].CV, najdeneJedla[0].indexJedloMenu, najdeneJedla[0].indexRestDB);
                 minCV(najdeneJedla, jedloCount);
 				for (int i = 0; i < jedloCount; i++)
 				{
@@ -137,7 +134,6 @@ int isNumber(char *string)
 //najde jedla, do pola ulozi CV, indexjedla, index Restiky a vrati pocet najdenych jedal
 int wantedFoodRestaurant(char* wantedFood, struct position userPos, VYHODNOSTJEDLA *najdeneJedla, int najdeneJedlaSize)
 {
-	//printf("test");
 	int CV = 0;
 	int Dm = 0;
 	int jedloCount = 0;
@@ -156,13 +152,8 @@ int wantedFoodRestaurant(char* wantedFood, struct position userPos, VYHODNOSTJED
 					najdeneJedla[jedloCount].indexJedloMenu = j;
 					jedloCount++;
 				}
-				
-				//printf("jedlo v restike cislo %d cenova vyhodnost %d\n", i, CV);
-				
 			}
-			
 		}
-		
 	}
 	return jedloCount;
 }
@@ -185,7 +176,6 @@ int compareCV(const void *a, const void *b)
 	}
 	
 }
-
 //najde najlepsie CV a flagne tym to jedlo
 int minCV(struct vyhodnostJedla *najdeneJedla, int najdeneJedlaSize)
 {
