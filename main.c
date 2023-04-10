@@ -17,6 +17,7 @@ typedef struct vyhodnostJedla {
 	int indexRestDB;
 	int indexJedloMenu;
 	int best;
+	char restaurantName[MAX_NAME + 1];
 } VYHODNOSTJEDLA;
 
 int extractPosition(char* positionString, int* posX, int* posY);
@@ -161,6 +162,7 @@ int wantedFoodRestaurant(char* wantedFood, struct position userPos, VYHODNOSTJED
 					najdeneJedla[jedloCount].Dm = Dm;
 					najdeneJedla[jedloCount].indexRestDB = i;
 					najdeneJedla[jedloCount].indexJedloMenu = j;
+					strcpy(najdeneJedla[jedloCount].restaurantName, db[i].name);
 					jedloCount++;
 				}
 			}
