@@ -50,20 +50,6 @@ int main(int argc, char *argv[]) {
 				fgets(wantedFood, MAX_NAME+1, stdin);
 				wantedFood[strlen(wantedFood)-1] = '\0';
 				jedloCount = wantedFoodRestaurant(wantedFood, userPos, najdeneJedla, DB_NUM);
-				qsort(najdeneJedla, jedloCount, sizeof(struct vyhodnostJedla), compareCV);
-                minCV(najdeneJedla, jedloCount);
-				for (int i = 0; i < jedloCount; i++)
-				{
-					if (najdeneJedla[i].best == TRUE)
-					{
-						printf("%s: %d %d *\n", db[najdeneJedla[i].indexRestDB].name, najdeneJedla[i].Dm, db[najdeneJedla[i].indexRestDB].menu[najdeneJedla[i].indexJedloMenu].price);
-					}
-					else
-					{
-						printf("%s: %d %d\n", db[najdeneJedla[i].indexRestDB].name, najdeneJedla[i].Dm, db[najdeneJedla[i].indexRestDB].menu[najdeneJedla[i].indexJedloMenu].price);
-					}
-					
-				}
 				
 				break;
             case 'n':
@@ -77,6 +63,31 @@ int main(int argc, char *argv[]) {
                 return 1;
         }
     }
+	if (pSet == TRUE)
+	{
+		if (nSet == TRUE)
+		{
+		}
+		else
+		{
+			qsort(najdeneJedla, jedloCount, sizeof(struct vyhodnostJedla), compareCV);
+			minCV(najdeneJedla, jedloCount);
+			for (int i = 0; i < jedloCount; i++)
+			{
+				if (najdeneJedla[i].best == TRUE)
+				{
+					printf("%s: %d %d *\n", db[najdeneJedla[i].indexRestDB].name, najdeneJedla[i].Dm, db[najdeneJedla[i].indexRestDB].menu[najdeneJedla[i].indexJedloMenu].price);
+				}
+				else
+				{
+					printf("%s: %d %d\n", db[najdeneJedla[i].indexRestDB].name, najdeneJedla[i].Dm, db[najdeneJedla[i].indexRestDB].menu[najdeneJedla[i].indexJedloMenu].price);
+				}
+				
+			}
+		}
+		
+	}
+	
 	if (argc == 1)
 	{
 		//vypis vsetkych restauracii
