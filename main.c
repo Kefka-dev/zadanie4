@@ -27,6 +27,7 @@ int wantedFoodRestaurant(	char* wantedFood,
 							VYHODNOSTJEDLA *najdeneJedla,
 							int najdeneJedlaSize);
 int compareCV(const void *a, const void *b);
+int compareRestaurantName(const void *a, const void *b);
 int minCV(struct vyhodnostJedla *najdeneJedla, int najdeneJedlaSize);
 
 int main(int argc, char *argv[]) {
@@ -188,6 +189,14 @@ int compareCV(const void *a, const void *b)
 		return 0;
 	}
 	
+}
+//funkcia pre qsort abecedne
+int compareRestaurantName(const void *a, const void *b)
+{
+	const struct vyhodnostJedla *restikaA = a;
+	const struct vyhodnostJedla *restikaB = b;
+
+	return strcmp(restikaA->restaurantName, restikaB->restaurantName);
 }
 //najde najlepsie CV a flagne tym to jedlo
 int minCV(struct vyhodnostJedla *najdeneJedla, int najdeneJedlaSize)
