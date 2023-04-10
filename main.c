@@ -203,10 +203,12 @@ int compareCV(const void *a, const void *b)
 	if (jedloA->CV < jedloB->CV)
 	{
 		return -1;
-	} else if ( jedloA->CV < jedloB->CV) 
+	} 
+	else if ( jedloA->CV > jedloB->CV) 
 	{
 		return 1;
-	} else 
+	} 
+	else 
 	{
 		return 0;
 	}
