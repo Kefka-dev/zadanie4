@@ -26,6 +26,7 @@ int wantedFoodRestaurant(	char* wantedFood,
 							VYHODNOSTJEDLA *najdeneJedla,
 							int najdeneJedlaSize);
 int compareCV(const void *a, const void *b);
+int minCV(struct vyhodnostJedla *najdeneJedla, int najdeneJedlaSize);
 
 int main(int argc, char *argv[]) {
 	int opt;
@@ -162,4 +163,28 @@ int compareCV(const void *a, const void *b)
 	
 }
 
+int minCV(struct vyhodnostJedla *najdeneJedla, int najdeneJedlaSize)
+{
+	int najmensieCV = najdeneJedla[0].CV;
+	for (int i = 1; i < najdeneJedlaSize; i++)
+	{
+		if (najdeneJedla[i].CV<najmensieCV)
+		{
+			najmensieCV = najdeneJedla[i].CV;
+		}
+	}
+	
+	for (int i = 0; i < najdeneJedlaSize; i++)
+	{
+		if (najdeneJedla[i].CV == najmensieCV)
+		{
+			najdeneJedla[i].best = TRUE;
+		}
+		else
+		{
+			najdeneJedla[i].best = FALSE;
+		}
+		
+	}
+	return 0;
 }
